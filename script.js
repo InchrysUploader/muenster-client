@@ -239,7 +239,6 @@ function signup(uname, password) {
     "sign up", {
       username: uname,
       password: password,
-      captcha: document.getElementById("captext1").value,
       token: localStorage.getItem("token"),
     },
     (status) => {
@@ -704,12 +703,6 @@ socket.on("sys message", function(data) {
   }
 });
 
-function loadCap() {
-  socket.emit("get captcha", {}, (cap) => {
-    document.getElementById("cap1").src = cap;
-  });
-}
-
 function changeColor() {
   socket.emit(
     "change color", {
@@ -780,5 +773,3 @@ if (
 ) {
   compressSide();
 }
-
-loadCap();
